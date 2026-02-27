@@ -1,2 +1,0 @@
-# fafaxu.github.io
-riddle
