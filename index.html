@@ -26,71 +26,141 @@
             justify-content: center;
             min-height: 100vh;
             padding: 20px;
-            background: linear-gradient(135deg, #c41e3a 0%, #8b0000 100%);
+            background: linear-gradient(135deg, #c41e3a 0%, #8b0000 50%, #6b0000 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-page::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,215,0,0.1) 0%, transparent 60%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
         }
 
         .login-logo {
-            width: 120px;
-            height: 120px;
-            background: white;
-            border-radius: 24px;
+            width: 140px;
+            height: 140px;
+            background: linear-gradient(135deg, #fff 0%, #fff9e6 100%);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            margin-bottom: 25px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3), 0 0 0 8px rgba(255,215,0,0.2);
+            position: relative;
+            z-index: 1;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         .login-logo span {
-            font-size: 60px;
+            font-size: 70px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
         }
 
         .login-title {
             color: white;
-            font-size: 28px;
+            font-size: 32px;
             font-weight: bold;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 8px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+            position: relative;
+            z-index: 1;
+            letter-spacing: 2px;
         }
 
         .login-subtitle {
-            color: rgba(255,255,255,0.9);
-            font-size: 16px;
-            margin-bottom: 50px;
+            color: rgba(255,255,255,0.85);
+            font-size: 15px;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+            letter-spacing: 1px;
         }
 
         .login-form {
             width: 100%;
-            max-width: 300px;
+            max-width: 320px;
+            position: relative;
+            z-index: 1;
         }
 
         .login-input {
             width: 100%;
-            padding: 15px 20px;
-            border: none;
-            border-radius: 8px;
+            padding: 16px 20px;
+            border: 2px solid transparent;
+            border-radius: 12px;
             font-size: 16px;
             margin-bottom: 15px;
             text-align: center;
+            background: rgba(255,255,255,0.95);
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .login-input:focus {
+            outline: none;
+            border-color: #ffd700;
+            box-shadow: 0 4px 20px rgba(255,215,0,0.3);
+            transform: translateY(-2px);
+        }
+
+        .login-input::placeholder {
+            color: #999;
         }
 
         .login-btn {
             width: 100%;
-            background: #ffd700;
+            background: linear-gradient(135deg, #ffd700 0%, #ffb700 100%);
             color: #8b0000;
             border: none;
-            padding: 15px;
-            border-radius: 8px;
+            padding: 16px;
+            border-radius: 12px;
             font-size: 18px;
             font-weight: bold;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
             transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .login-btn:hover::before {
+            left: 100%;
         }
 
         .login-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        }
+
+        .login-btn:active {
+            transform: translateY(-1px);
         }
 
         /* 主页面 */
@@ -121,43 +191,51 @@
         }
 
         .user-info {
-            background: white;
+            background: linear-gradient(135deg, #fff 0%, #fff9f9 100%);
             margin: -20px 15px 15px;
-            padding: 18px 20px;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 18px;
             position: relative;
             z-index: 10;
+            border: 1px solid rgba(196, 30, 58, 0.08);
         }
 
         .user-avatar {
-            width: 65px;
-            height: 65px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            background: linear-gradient(135deg, #c41e3a 0%, #ff6b6b 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-            box-shadow: 0 4px 15px rgba(255, 154, 158, 0.4);
+            box-shadow: 0 6px 20px rgba(196, 30, 58, 0.3);
+            transition: transform 0.3s;
+        }
+
+        .user-avatar:hover {
+            transform: scale(1.05);
         }
 
         .avatar-emoji {
-            font-size: 35px;
+            font-size: 38px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
         }
 
         .avatar-ring {
             position: absolute;
-            top: -4px;
-            left: -4px;
-            right: -4px;
-            bottom: -4px;
-            border: 2px dashed #c41e3a;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 3px dashed #ffd700;
             border-radius: 50%;
-            animation: spin 10s linear infinite;
+            animation: spin 8s linear infinite;
+            opacity: 0.8;
         }
 
         @keyframes spin {
@@ -170,121 +248,176 @@
         }
 
         .user-details h3 {
-            font-size: 18px;
-            margin-bottom: 5px;
+            font-size: 20px;
+            margin-bottom: 6px;
             color: #333;
+            font-weight: 600;
         }
 
         .user-level {
             display: inline-block;
             background: linear-gradient(135deg, #c41e3a 0%, #ff6b6b 100%);
             color: white;
-            padding: 3px 12px;
-            border-radius: 15px;
-            font-size: 11px;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 12px;
             font-weight: bold;
+            box-shadow: 0 2px 8px rgba(196, 30, 58, 0.3);
         }
 
         .user-badges {
-            margin-top: 6px;
+            margin-top: 8px;
             display: flex;
-            gap: 5px;
+            gap: 6px;
         }
 
         .badge {
-            font-size: 16px;
+            font-size: 18px;
+            transition: transform 0.2s;
+            cursor: default;
+        }
+
+        .badge:hover {
+            transform: scale(1.2);
         }
 
         .user-rank {
             text-align: center;
-            padding-left: 15px;
-            border-left: 1px dashed #ddd;
+            padding-left: 18px;
+            border-left: 2px dashed rgba(196, 30, 58, 0.2);
         }
 
         .rank-badge {
             background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
-            color: #333;
-            padding: 5px 12px;
-            border-radius: 20px;
+            color: #8b0000;
+            padding: 8px 16px;
+            border-radius: 25px;
             font-weight: bold;
-            font-size: 14px;
-            box-shadow: 0 2px 8px rgba(255, 215, 0, 0.4);
+            font-size: 16px;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+            display: inline-block;
+            min-width: 70px;
         }
 
         .rank-text {
-            font-size: 11px;
+            font-size: 12px;
             color: #999;
-            margin-top: 4px;
+            margin-top: 6px;
+            font-weight: 500;
         }
 
         /* 快速开始 - 置顶并增加浅红色渐变底色 */
         .quick-actions {
-            background: linear-gradient(135deg, #fff5f5 0%, #ffe0e0 100%);
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe8e8 50%, #fff0f0 100%);
             margin: 0 15px 15px;
-            padding: 20px;
-            border-radius: 16px;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
-            border: 1px solid rgba(196, 30, 58, 0.1);
+            padding: 25px 20px;
+            border-radius: 20px;
+            box-shadow: 0 6px 25px rgba(196, 30, 58, 0.15);
+            border: 2px solid rgba(196, 30, 58, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quick-actions::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,215,0,0.1) 0%, transparent 70%);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.1); }
         }
 
         .quick-action-title {
-            font-size: 14px;
+            font-size: 16px;
             color: #c41e3a;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             text-align: center;
-            font-weight: 600;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+            letter-spacing: 1px;
         }
 
         .action-buttons {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 15px;
+            gap: 18px;
+            position: relative;
+            z-index: 1;
         }
 
         .action-btn {
-            background: white;
+            background: linear-gradient(135deg, #fff 0%, #fff9f9 100%);
             border: 2px solid transparent;
-            padding: 20px 15px;
-            border-radius: 16px;
+            padding: 25px 15px;
+            border-radius: 18px;
             cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             position: relative;
             overflow: hidden;
         }
 
+        .action-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #c41e3a, #ff6b6b);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .action-btn:hover::after {
+            transform: scaleX(1);
+        }
+
         .action-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-            border-color: rgba(196, 30, 58, 0.3);
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 12px 35px rgba(196, 30, 58, 0.2);
+            border-color: rgba(196, 30, 58, 0.2);
+        }
+
+        .action-btn:active {
+            transform: translateY(-2px) scale(0.98);
         }
 
         .action-btn .icon {
-            width: 55px;
-            height: 55px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            font-size: 30px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
             transition: all 0.3s;
         }
 
         .action-btn:hover .icon {
-            transform: scale(1.1) rotate(5deg);
+            transform: scale(1.15) rotate(8deg);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
 
         .action-btn.create .icon {
-            background: linear-gradient(135deg, #c41e3a 0%, #ff6b6b 100%);
+            background: linear-gradient(135deg, #c41e3a 0%, #ff4757 100%);
         }
 
         .action-btn.answer .icon {
-            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff9ff3 100%);
         }
 
         .btn-emoji {
@@ -292,53 +425,75 @@
         }
 
         .btn-text {
-            font-size: 16px;
+            font-size: 17px;
             font-weight: bold;
             color: #333;
             margin-top: 5px;
+            letter-spacing: 0.5px;
         }
 
         .btn-desc {
-            font-size: 11px;
-            color: #999;
+            font-size: 12px;
+            color: #888;
+            font-weight: 500;
         }
 
         /* 统计区域 - 放在快速开始下面 */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin: 0 15px 15px;
+            gap: 12px;
+            margin: 0 15px 20px;
         }
 
         .stat-card {
-            background: white;
-            padding: 15px 10px;
-            border-radius: 12px;
+            background: linear-gradient(135deg, #fff 0%, #fafafa 100%);
+            padding: 18px 10px;
+            border-radius: 16px;
             text-align: center;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(0,0,0,0.04);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #c41e3a, #ff6b6b);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover::before {
+            transform: scaleX(1);
         }
 
         .stat-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
         }
 
         .stat-value {
-            font-size: 22px;
+            font-size: 26px;
             font-weight: bold;
-            color: #c41e3a;
-            background: linear-gradient(135deg, #c41e3a 0%, #ff6b6b 100%);
+            background: linear-gradient(135deg, #c41e3a 0%, #ff4757 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            line-height: 1.2;
         }
 
         .stat-label {
-            font-size: 11px;
-            color: #999;
-            margin-top: 5px;
+            font-size: 12px;
+            color: #666;
+            margin-top: 6px;
+            font-weight: 500;
         }
 
         /* 页面内容 */
@@ -346,6 +501,18 @@
             display: none;
             min-height: 100vh;
             background: #f5f5f5;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         .page-header {
@@ -528,69 +695,124 @@
 
         /* 答题页面 */
         .riddle-card {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            background: linear-gradient(135deg, #fff 0%, #fafafa 100%);
+            padding: 25px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.1);
+            border: 1px solid rgba(0,0,0,0.04);
+            animation: slideUp 0.4s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .riddle-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed rgba(0,0,0,0.1);
         }
 
         .riddle-author {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
         .author-avatar {
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #c41e3a 0%, #ff6b6b 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
+            font-size: 22px;
+            box-shadow: 0 4px 12px rgba(196, 30, 58, 0.3);
         }
 
         .author-name {
-            font-weight: 500;
+            font-weight: 600;
+            color: #333;
+            font-size: 15px;
         }
 
         .riddle-type {
-            background: #f0f0f0;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            color: #666;
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe8e8 100%);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: #c41e3a;
+            font-weight: 600;
+            border: 1px solid rgba(196, 30, 58, 0.2);
         }
 
         .riddle-content {
-            font-size: 18px;
+            font-size: 22px;
             line-height: 1.8;
             color: #333;
-            padding: 15px;
-            background: #fafafa;
-            border-radius: 8px;
-            margin-bottom: 15px;
+            padding: 25px;
+            background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+            border-radius: 16px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 500;
+            border: 2px dashed rgba(196, 30, 58, 0.15);
+            position: relative;
+        }
+
+        .riddle-content::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            font-size: 40px;
+            color: rgba(196, 30, 58, 0.2);
+            font-family: serif;
+            line-height: 1;
+        }
+
+        .riddle-content::after {
+            content: '"';
+            position: absolute;
+            bottom: 0;
+            right: 15px;
+            font-size: 40px;
+            color: rgba(196, 30, 58, 0.2);
+            font-family: serif;
+            line-height: 1;
         }
 
         .hint-box {
-            background: #fff3cd;
-            border-left: 4px solid #ffc107;
-            padding: 12px;
-            border-radius: 0 8px 8px 0;
-            margin-bottom: 15px;
+            background: linear-gradient(135deg, #fff9e6 0%, #fff3cd 100%);
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            padding: 15px 18px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hint-box::before {
+            content: '💡';
+            font-size: 20px;
         }
 
         .hint-box strong {
             color: #856404;
+            font-weight: 600;
         }
 
         .answer-section {
@@ -601,35 +823,78 @@
 
         .answer-section input {
             flex: 1;
-            padding: 12px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 16px;
+            padding: 16px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 17px;
+            transition: all 0.3s;
+            background: #fafafa;
+        }
+
+        .answer-section input:focus {
+            outline: none;
+            border-color: #c41e3a;
+            background: white;
+            box-shadow: 0 4px 15px rgba(196, 30, 58, 0.15);
         }
 
         .answer-btn {
-            background: #c41e3a;
+            background: linear-gradient(135deg, #c41e3a 0%, #ff4757 100%);
             color: white;
             border: none;
-            padding: 12px 25px;
-            border-radius: 8px;
-            font-size: 16px;
+            padding: 16px 30px;
+            border-radius: 12px;
+            font-size: 17px;
+            font-weight: bold;
             cursor: pointer;
+            box-shadow: 0 6px 20px rgba(196, 30, 58, 0.3);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .answer-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .answer-btn:hover::before {
+            left: 100%;
+        }
+
+        .answer-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(196, 30, 58, 0.4);
+        }
+
+        .answer-btn:active {
+            transform: translateY(0);
         }
 
         .skip-btn {
-            background: #f0f0f0;
+            background: linear-gradient(135deg, #f5f5f5 0%, #eeeeee 100%);
             color: #666;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 8px;
+            border: 2px solid #e0e0e0;
+            padding: 14px 25px;
+            border-radius: 12px;
             font-size: 16px;
             cursor: pointer;
             width: 100%;
+            transition: all 0.3s;
+            font-weight: 500;
         }
 
         .skip-btn:hover {
-            background: #e0e0e0;
+            background: linear-gradient(135deg, #eeeeee 0%, #e0e0e0 100%);
+            border-color: #ccc;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
         /* 敲鼓动画 */
@@ -842,22 +1107,338 @@
             color: #721c24;
         }
 
+        /* 排行榜样式 */
+        .rank-container {
+            padding: 10px 0;
+        }
+
+        /* 前三名 podium */
+        .rank-top3 {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 15px;
+            margin-bottom: 30px;
+            padding: 30px 20px 20px;
+            background: linear-gradient(135deg, #fff9e6 0%, #fff3cd 100%);
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .rank-top3::before {
+            content: '🏆';
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 40px;
+            opacity: 0.3;
+        }
+
+        .rank-podium {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            transition: transform 0.3s;
+        }
+
+        .rank-podium:hover {
+            transform: translateY(-5px);
+        }
+
+        .rank-podium.first {
+            order: 2;
+            z-index: 3;
+        }
+
+        .rank-podium.second {
+            order: 1;
+            z-index: 2;
+        }
+
+        .rank-podium.third {
+            order: 3;
+            z-index: 1;
+        }
+
+        .rank-crown {
+            font-size: 35px;
+            margin-bottom: 8px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+
+        .rank-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            background: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            position: relative;
+            border: 4px solid;
+        }
+
+        .rank-podium.first .rank-avatar {
+            width: 90px;
+            height: 90px;
+            font-size: 45px;
+            border-color: #FFD700;
+            box-shadow: 0 6px 25px rgba(255, 215, 0, 0.5);
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        .rank-podium.second .rank-avatar {
+            border-color: #C0C0C0;
+            box-shadow: 0 4px 15px rgba(192, 192, 192, 0.5);
+        }
+
+        .rank-podium.third .rank-avatar {
+            border-color: #CD7F32;
+            box-shadow: 0 4px 15px rgba(205, 127, 50, 0.5);
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 6px 25px rgba(255, 215, 0, 0.5); }
+            50% { box-shadow: 0 6px 35px rgba(255, 215, 0, 0.8); }
+        }
+
+        .rank-number {
+            position: absolute;
+            bottom: -5px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .rank-podium.first .rank-number {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #333;
+        }
+
+        .rank-podium.second .rank-number {
+            background: linear-gradient(135deg, #C0C0C0, #A0A0A0);
+            color: #333;
+        }
+
+        .rank-podium.third .rank-number {
+            background: linear-gradient(135deg, #CD7F32, #B87333);
+        }
+
+        .rank-name {
+            margin-top: 12px;
+            font-weight: bold;
+            font-size: 15px;
+            color: #333;
+        }
+
+        .rank-podium.first .rank-name {
+            font-size: 17px;
+            color: #c41e3a;
+        }
+
+        .rank-score {
+            font-size: 18px;
+            font-weight: bold;
+            color: #c41e3a;
+            margin-top: 5px;
+            background: linear-gradient(135deg, #c41e3a, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .rank-podium.first .rank-score {
+            font-size: 22px;
+        }
+
+        /*  podium 底座 */
+        .podium-base {
+            width: 60px;
+            height: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .rank-podium.first .podium-base {
+            width: 80px;
+            height: 20px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .rank-podium.second .podium-base {
+            background: linear-gradient(135deg, #C0C0C0, #A0A0A0);
+            box-shadow: 0 4px 15px rgba(192, 192, 192, 0.4);
+        }
+
+        .rank-podium.third .podium-base {
+            background: linear-gradient(135deg, #CD7F32, #B87333);
+            box-shadow: 0 4px 15px rgba(205, 127, 50, 0.4);
+        }
+
+        /* 排行榜列表 */
+        .rank-list {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .rank-list-header {
+            display: flex;
+            padding: 15px 20px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #eee;
+            font-size: 13px;
+            color: #999;
+            font-weight: 500;
+        }
+
+        .rank-list-header span:first-child {
+            width: 50px;
+        }
+
+        .rank-list-header span:nth-child(2) {
+            flex: 1;
+        }
+
+        .rank-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background 0.2s;
+        }
+
+        .rank-item:hover {
+            background: #fafafa;
+        }
+
+        .rank-item:last-child {
+            border-bottom: none;
+        }
+
+        .rank-item-rank {
+            width: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #999;
+        }
+
+        .rank-item-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-right: 15px;
+        }
+
+        .rank-item-info {
+            flex: 1;
+        }
+
+        .rank-item-name {
+            font-weight: 500;
+            font-size: 15px;
+            color: #333;
+        }
+
+        .rank-item-level {
+            font-size: 12px;
+            color: #999;
+            margin-top: 3px;
+        }
+
+        .rank-item-score {
+            font-size: 18px;
+            font-weight: bold;
+            color: #c41e3a;
+        }
+
         /* 排行榜空状态 */
         .rank-empty {
             text-align: center;
-            padding: 60px 20px;
+            padding: 100px 30px;
             color: #999;
-            background: white;
-            border-radius: 12px;
+            background: linear-gradient(135deg, #fff 0%, #fafafa 100%);
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 2px dashed rgba(196, 30, 58, 0.15);
         }
 
         .rank-empty .icon {
-            font-size: 80px;
-            margin-bottom: 20px;
+            font-size: 100px;
+            margin-bottom: 25px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         .rank-empty p {
+            font-size: 18px;
+            font-weight: 500;
+            color: #666;
+        }
+
+        .rank-empty p:last-child {
+            font-size: 14px;
+            color: #999;
+            margin-top: 10px;
+        }
+
+        /* 空状态通用样式 */
+        .empty-state {
+            text-align: center;
+            padding: 80px 30px;
+            color: #999;
+            background: linear-gradient(135deg, #fff 0%, #fafafa 100%);
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            border: 2px dashed rgba(0,0,0,0.08);
+        }
+
+        .empty-state .icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            opacity: 0.8;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .empty-state p {
             font-size: 16px;
+            color: #666;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        .empty-state .action-hint {
+            font-size: 14px;
+            color: #999;
+            margin-top: 12px;
         }
 
         /* 底部导航 */
@@ -899,22 +1480,6 @@
         .main-page.with-nav {
             padding-bottom: 70px;
         }
-
-        /* 空状态 */
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-            color: #999;
-        }
-
-        .empty-state .icon {
-            font-size: 60px;
-            margin-bottom: 15px;
-        }
-
-        .empty-state p {
-            font-size: 14px;
-        }
     </style>
 </head>
 <body>
@@ -940,7 +1505,7 @@
 
         <div class="user-info">
             <div class="user-avatar" id="userAvatar">
-                <span class="avatar-emoji">🎭</span>
+                <span class="avatar-emoji">🧧</span>
                 <div class="avatar-ring"></div>
             </div>
             <div class="user-details">
@@ -985,8 +1550,8 @@
                 <div class="stat-label">积分</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value" id="streakCount">0</div>
-                <div class="stat-label">连续答对</div>
+                <div class="stat-value" id="correctCount">0</div>
+                <div class="stat-label">已答对</div>
             </div>
             <div class="stat-card">
                 <div class="stat-value" id="riddleCount">0</div>
@@ -1197,13 +1762,13 @@
             if (!existingUser) {
                 // 新用户，分配随机头像
                 currentUser = {
-                    name: username,
-                    avatar: getRandomAvatar(),
-                    level: '初级谜友',
-                    points: 0,
-                    streak: 0,
-                    riddleCount: 0
-                };
+                name: username,
+                avatar: getRandomAvatar(),
+                level: '初级谜友',
+                points: 0,
+                correctCount: 0,
+                riddleCount: 0
+            };
                 allUsers.push({...currentUser});
                 localStorage.setItem('allUsers', JSON.stringify(allUsers));
             } else {
@@ -1282,7 +1847,7 @@
                 document.getElementById('userName').textContent = currentUser.name;
                 document.getElementById('userLevel').textContent = currentUser.level;
                 document.getElementById('userPoints').textContent = currentUser.points;
-                document.getElementById('streakCount').textContent = currentUser.streak;
+                document.getElementById('correctCount').textContent = currentUser.correctCount;
                 document.getElementById('riddleCount').textContent = currentUser.riddleCount;
             }
         }
@@ -1369,8 +1934,25 @@
             btn.disabled = true;
             
             setTimeout(() => {
-                const randomIndex = Math.floor(Math.random() * aiRiddleDatabase.length);
-                const riddle = aiRiddleDatabase[randomIndex];
+                // 获取系统已有的题目（包括预置的和用户创建的）
+                const existingQuestions = riddles.map(r => r.question);
+                
+                // 过滤出未使用的题目
+                const availableRiddles = aiRiddleDatabase.filter(
+                    riddle => !existingQuestions.includes(riddle.question)
+                );
+                
+                // 如果没有可用题目了
+                if (availableRiddles.length === 0) {
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                    alert('AI题库中的题目都已经被使用过了，请手动创建新题目吧！');
+                    return;
+                }
+                
+                // 从可用题目中随机选择
+                const randomIndex = Math.floor(Math.random() * availableRiddles.length);
+                const riddle = availableRiddles[randomIndex];
                 
                 document.getElementById('riddleQuestion').value = riddle.question;
                 document.getElementById('riddleAnswer').value = riddle.answer;
@@ -1487,18 +2069,17 @@
             saveAnsweredRiddles();
 
             if (isCorrect) {
-                currentUser.streak++;
                 // 答对加10分，儿童谜加5分
                 const isKidsRiddle = riddle.type.includes('📚');
                 const points = isKidsRiddle ? 5 : 10;
                 currentUser.points += points;
+                currentUser.correctCount++;
                 saveUser();
                 showDrumAnimation();
                 setTimeout(() => {
                     loadAnswerRiddle();
                 }, 2000);
             } else {
-                currentUser.streak = 0;
                 saveUser();
                 alert(`答错了！正确答案是：${riddle.answer}`);
                 loadAnswerRiddle();
@@ -1554,14 +2135,14 @@
             const rankClass = ['first', 'second', 'third'];
             
             top3.forEach((user, index) => {
-                const borderColor = index === 0 ? '#FFD700' : index === 1 ? '#C0C0C0' : '#CD7F32';
                 html += `
                     <div class="rank-podium ${rankClass[index]}">
                         <div class="rank-crown">${crowns[index]}</div>
-                        <div class="rank-avatar" style="border-color: ${borderColor};">${user.avatar}</div>
-                        <div class="rank-number" style="background: ${borderColor}; color: ${index < 2 ? '#333' : 'white'};">${index + 1}</div>
+                        <div class="rank-avatar">${user.avatar}</div>
+                        <div class="rank-number">${index + 1}</div>
                         <div class="rank-name">${user.name}</div>
                         <div class="rank-score">${user.points}分</div>
+                        <div class="podium-base"></div>
                     </div>
                 `;
             });
@@ -1569,7 +2150,14 @@
             
             // 渲染4-10名
             if (top10.length > 3) {
-                html += '<div class="rank-list">';
+                html += `
+                    <div class="rank-list">
+                        <div class="rank-list-header">
+                            <span>排名</span>
+                            <span>玩家</span>
+                            <span>积分</span>
+                        </div>
+                `;
                 top10.slice(3).forEach((user, index) => {
                     html += `
                         <div class="rank-item">
