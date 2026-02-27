@@ -1,1 +1,1 @@
-fafaxu.github.io
+riddle.fafaxu.github.io
